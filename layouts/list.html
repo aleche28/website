@@ -1,6 +1,14 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 {{ .Content }}
+{{- if eq .Section "blog" }}
+  {{- with site.Taxonomies.tags }}
+    <p class="meta tags blog-tags">
+      {{- with site.GetPage "/tags" }}<a href="{{ .RelPermalink }}">Tags</a>:{{ end }}
+      {{- range .ByCount }} <a href="{{ .Page.RelPermalink }}">#{{ .Page.Data.Term }}</a>{{ end }}
+    </p>
+  {{- end }}
+{{- end }}
 {{- with .Pages }}
   {{- range .GroupByDate "2006" }}
     <h2 class="section-title">{{ .Key }}</h2>
