@@ -8,11 +8,15 @@ node = "22.12.0"
 
 [tasks.dev]
 description = "Run the dev server with drafts, at http://localhost:1313"
-run = "hugo server --buildDrafts --disableFastRender"
+run = "hugo server --buildDrafts --disableFastRender --renderToMemory"
+
+[tasks.preview]
+description = "Serve the site as it will go live (no drafts), at http://localhost:1313"
+run = "hugo server --disableFastRender --renderToMemory"
 
 [tasks.build]
 description = "Production build into ./public (same command as CI)"
-run = "hugo --gc --minify --panicOnWarning"
+run = "hugo --gc --minify --panicOnWarning --cleanDestinationDir"
 
 [tasks.lint]
 description = "Lint Markdown files"
@@ -21,3 +25,4 @@ run = "markdownlint-cli2"
 [tasks.check]
 description = "Everything CI runs"
 depends = ["lint", "build"]
+
