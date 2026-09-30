@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" width="640" height="160" font-family="system-ui, sans-serif" font-size="18">
+  <rect width="640" height="160" fill="#f4f5f7"/>
+  <rect x="40" y="50" width="160" height="60" rx="6" fill="#fff" stroke="#2f5f98"/>
+  <text x="120" y="86" text-anchor="middle" fill="#1f2328">client</text>
+  <rect x="440" y="50" width="160" height="60" rx="6" fill="#fff" stroke="#2f5f98"/>
+  <text x="520" y="86" text-anchor="middle" fill="#1f2328">server</text>
+  <path d="M200 80h232" stroke="#2f5f98" stroke-width="2"/>
+  <path d="M432 80l-10-6v12z" fill="#2f5f98"/>
+</svg>

@@ -16,11 +16,22 @@ email = "ale.chessa28@gmail.com"
 [taxonomies]
 tag = "tags"
 
+# RSS only for the blog (enabled in content/blog/_index.md) and for each tag.
+[outputs]
+home = ["html"]
+section = ["html"]
+taxonomy = ["html"]
+term = ["html", "rss"]
+
 [markup.highlight]
 noClasses = false
 
 [markup.goldmark.renderer]
 unsafe = false
+
+# Resolve images in page bundles to full paths, so they also work in the feed.
+[markup.goldmark.renderHooks.image]
+useEmbedded = "fallback"
 
 [[menus.main]]
 name = "Blog"

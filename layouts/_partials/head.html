@@ -11,6 +11,15 @@
 <link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="32x32">
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
-{{- with .OutputFormats.Get "rss" }}
-  <link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ site.Title }}">
+{{- /* Feed autodiscovery: the blog feed on every page, plus the tag feed on tag pages. */}}
+{{- with site.GetPage "/blog" }}
+  {{- $title := printf "%s · %s" .Title site.Title }}
+  {{- with .OutputFormats.Get "rss" }}
+    <link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ $title }}">
+  {{- end }}
+{{- end }}
+{{- if eq .Kind "term" }}
+  {{- with .OutputFormats.Get "rss" }}
+    <link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="#{{ $.Data.Term }} · {{ site.Title }}">
+  {{- end }}
 {{- end }}
