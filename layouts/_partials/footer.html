@@ -1,5 +1,5 @@
 <footer class="site-footer">
-  <p>© {{ now.Year }} {{ site.Title }}</p>
+  <p>© {{ now.Year }} {{ site.Title }} · Content <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a></p>
   <p>
     {{- partial "social-links.html" (dict "icons" false) }}
     {{- with site.GetPage "/blog" }}{{ with .OutputFormats.Get "rss" }} · <a href="{{ .RelPermalink }}">RSS</a>{{ end }}{{ end }}
