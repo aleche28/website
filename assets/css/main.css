@@ -1,31 +1,48 @@
 /*
- * Bare theme. Every colour and font is a custom property, so a later mode
- * (dark, and term mode via [data-mode="term"]) only has to override variables.
+ * Minimal, text-first theme. Every colour and font is a custom property, so
+ * dark mode (and later term mode, via [data-mode="term"]) only overrides
+ * variables.
  */
 
+/* ---------- Tokens ---------- */
+
 :root {
-  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
   --measure: 68ch;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+  --radius: 6px;
 
   --bg: #fdfdfc;
   --fg: #1f2328;
-  --muted: #656d76;
+  --muted: #5c646d;
   --accent: #2f5f98;
-  --border: #d8dee4;
-  --code-bg: #f3f4f6;
+  --accent-hover: #1f4777;
+  --border: #e1e4e8;
+  --code-bg: #f4f5f7;
+  --selection: #d6e4f5;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #15171a;
-    --fg: #e6e8eb;
+    --bg: #131519;
+    --fg: #e4e7eb;
     --muted: #9aa3ad;
-    --accent: #7fa8d9;
-    --border: #30363d;
-    --code-bg: #1f2328;
+    --accent: #86acdc;
+    --accent-hover: #adc8ea;
+    --border: #2b3038;
+    --code-bg: #1b1e24;
+    --selection: #2c4466;
   }
 }
+
+/* ---------- Base ---------- */
 
 *,
 *::before,
@@ -35,56 +52,264 @@
 
 html {
   color-scheme: light dark;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   max-width: var(--measure);
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: var(--space-5) var(--space-3) var(--space-4);
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-body);
   font-size: 1.0625rem;
-  line-height: 1.65;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--selection);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: var(--space-5) 0 var(--space-3);
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 2rem;
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+p,
+ul,
+ol,
+blockquote,
+pre,
+figure {
+  margin: 0 0 var(--space-4);
+}
+
+ul,
+ol {
+  padding-left: var(--space-4);
+}
+
+li + li {
+  margin-top: var(--space-1);
 }
 
 a {
   color: var(--accent);
-  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
 }
 
 a:hover {
+  color: var(--accent-hover);
   text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+strong {
+  font-weight: 650;
+}
+
+hr {
+  margin: var(--space-5) 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+blockquote {
+  padding-left: var(--space-3);
+  border-left: 3px solid var(--border);
+  color: var(--muted);
+}
+
+/* Tables are wrapped by layouts/_markup/render-table.html so they can scroll
+   on narrow screens without losing table semantics. */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 0 0 var(--space-4);
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 0.95em;
+}
+
+th,
+td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
+}
+
+/* ---------- Code ---------- */
+
+code,
+pre,
+kbd {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  font-variant-ligatures: none;
+}
+
+:not(pre) > code {
+  padding: 0.1em 0.35em;
+  background: var(--code-bg);
+  border-radius: 4px;
+}
+
+pre,
+.chroma {
+  overflow-x: auto;
+  padding: var(--space-3);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  line-height: 1.55;
+  tab-size: 4;
+}
+
+pre code {
+  font-size: inherit;
+}
+
+.highlight {
+  margin-bottom: var(--space-4);
+}
+
+.highlight pre {
+  margin: 0;
+}
+
+/* ---------- Layout ---------- */
+
+.skip-link {
+  position: absolute;
+  left: var(--space-3);
+  top: -3rem;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.skip-link:focus {
+  top: var(--space-3);
 }
 
 .site-header {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
+  gap: var(--space-2) var(--space-4);
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 3rem;
+  margin-bottom: var(--space-6);
 }
 
 .site-title {
   color: var(--fg);
-  font-weight: 600;
+  font-weight: 650;
+  letter-spacing: -0.01em;
   text-decoration: none;
+}
+
+.site-title:hover {
+  color: var(--accent);
 }
 
 .site-header nav {
   display: flex;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
-.site-header nav a[aria-current="page"] {
-  color: var(--fg);
+.site-header nav a {
+  color: var(--muted);
   text-decoration: none;
 }
 
-.meta,
-.post-list time {
+.site-header nav a:hover,
+.site-header nav a[aria-current="page"] {
+  color: var(--fg);
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  justify-content: space-between;
+  margin-top: var(--space-6);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
   color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer a {
+  color: inherit;
+}
+
+.site-footer a:hover {
+  color: var(--fg);
+}
+
+/* ---------- Components ---------- */
+
+.intro {
+  margin-bottom: var(--space-6);
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.section-title {
+  margin-top: 0;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .post-list {
@@ -94,32 +319,43 @@ a:hover {
 
 .post-list li {
   display: flex;
-  gap: 1rem;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-2);
+}
+
+.post-list time,
+.meta {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
 }
 
 .post-list time {
   flex-shrink: 0;
-  font-family: var(--font-mono);
-  font-size: 0.9em;
+  padding-top: 0.15em;
 }
 
-code,
-pre {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
+.post-header {
+  margin-bottom: var(--space-5);
 }
 
-pre {
-  overflow-x: auto;
-  padding: 1rem;
-  background: var(--code-bg);
-  border-radius: 4px;
+.post-header h1 {
+  margin-bottom: var(--space-2);
 }
 
-.site-footer {
-  margin-top: 4rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
+.meta {
+  margin: 0;
+}
+
+.tags a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tags a:hover {
+  color: var(--accent);
+}
+
+.empty {
   color: var(--muted);
-  font-size: 0.9em;
 }

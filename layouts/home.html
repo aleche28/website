@@ -4,14 +4,12 @@
 </section>
 
 <section>
-  <h2>Latest posts</h2>
+  <h2 class="section-title">Latest posts</h2>
   {{- with first 5 (where site.RegularPages "Section" "blog") }}
     {{ partial "post-list.html" . }}
+    {{- with site.GetPage "/blog" }}<p><a href="{{ .RelPermalink }}">All posts →</a></p>{{ end }}
   {{- else }}
-    <p>Posts coming soon.</p>
-  {{- end }}
-  {{- with site.GetPage "/blog" }}
-    <p><a href="{{ .RelPermalink }}">All posts</a>{{ with .OutputFormats.Get "rss" }} · <a href="{{ .RelPermalink }}">RSS</a>{{ end }}</p>
+    <p class="empty">Posts coming soon.{{ with site.GetPage "/blog" }}{{ with .OutputFormats.Get "rss" }} Follow via <a href="{{ .RelPermalink }}">RSS</a>.{{ end }}{{ end }}</p>
   {{- end }}
 </section>
 {{ end }}
