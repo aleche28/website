@@ -1,5 +1,5 @@
 ---
 title: Blog
-description: Notes on interesting things I'm doing or learning.
+description: Notes on Go, observability and backend engineering, mostly from building GrepDocs.
 emptyMessage: Posts coming soon.
 ---
