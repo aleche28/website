@@ -1,0 +1,37 @@
+baseURL = "https://alessiochessa.dev/"
+locale = "en-US"
+title = "Alessio Chessa"
+
+enableRobotsTXT = true
+
+[params]
+description = "Backend engineer. .NET, Go, observability, distributed systems."
+
+[params.social]
+github = "https://github.com/aleche28"
+linkedin = "https://www.linkedin.com/in/alessiochessa/"
+email = "ale.chessa28@gmail.com"
+
+[taxonomies]
+tag = "tags"
+
+[markup.highlight]
+noClasses = false
+
+[markup.goldmark.renderer]
+unsafe = false
+
+[[menus.main]]
+name = "Blog"
+pageRef = "/blog"
+weight = 10
+
+[[menus.main]]
+name = "Projects"
+pageRef = "/projects"
+weight = 20
+
+[[menus.main]]
+name = "About"
+pageRef = "/about"
+weight = 30
