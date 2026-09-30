@@ -56,7 +56,7 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] Favicon (SVG + ICO + Apple touch icon)
 - [x] Draft style guide post for reviewing the design locally
 
-### 3. Content: Home, About, Projects ← current
+### 3. Content: Home, About, Projects
 
 - [x] Home: intro, contact links with icons, projects, latest posts
 - [x] About: short bio, what I work on, background, contacts
@@ -65,12 +65,12 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] Decide which contacts are public and fill in `params.social` (GitHub, LinkedIn, email)
 - [ ] Review of every page by me
 
-### 4. Blog features
+### 4. Blog features ← current
 
-- [ ] RSS at `/blog/index.xml` with full post content; per-tag feeds (`/tags/go/index.xml`)
-- [ ] Drop the RSS feeds that aren't needed (e.g. home, projects)
-- [ ] Table of contents for long posts
-- [ ] Nicer tag list and tag pages
+- [x] RSS at `/blog/index.xml` with full post content; per-tag feeds (`/tags/go/index.xml`)
+- [x] Drop the RSS feeds that aren't needed (home, sections other than the blog, `/tags/`); the blog feed is linked for autodiscovery on every page
+- [x] Table of contents for long posts: opt-in with `toc: true`
+- [x] Nicer tag list and tag pages: `/tags/` with counts, `#tag` pages with their feed, tag list on `/blog/`
 
 ### 5. SEO and sharing
 
