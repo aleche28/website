@@ -5,7 +5,8 @@ title = "Alessio Chessa"
 enableRobotsTXT = true
 
 [params]
-description = "Backend engineer. .NET, Go, observability, distributed systems."
+description = "Backend engineer working on delivery and observability. Writing Go."
+role = "Backend engineer"
 
 [params.social]
 github = "https://github.com/aleche28"

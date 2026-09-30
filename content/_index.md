@@ -2,4 +2,4 @@
 title: Home
 ---
 
-Backend engineer. .NET, Go, observability, distributed systems.
+Backend engineer working on delivery and observability. Writing Go.
