@@ -1,0 +1,23 @@
+# Tool versions for local development and CI (jdx/mise-action reads this file).
+# Bump versions here only; everything else picks them up.
+
+[tools]
+hugo = "0.167.0"
+node = "22.12.0"
+"npm:markdownlint-cli2" = "0.23.3"
+
+[tasks.dev]
+description = "Run the dev server with drafts, at http://localhost:1313"
+run = "hugo server --buildDrafts --disableFastRender"
+
+[tasks.build]
+description = "Production build into ./public (same command as CI)"
+run = "hugo --gc --minify --panicOnWarning"
+
+[tasks.lint]
+description = "Lint Markdown files"
+run = "markdownlint-cli2"
+
+[tasks.check]
+description = "Everything CI runs"
+depends = ["lint", "build"]

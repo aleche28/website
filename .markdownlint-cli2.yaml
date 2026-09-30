@@ -1,0 +1,16 @@
+# https://github.com/DavidAnson/markdownlint-cli2
+config:
+  default: true
+  # Prose is written one paragraph per line; don't enforce a line length.
+  MD013: false
+  # Posts use front matter `title` as the H1.
+  MD025:
+    front_matter_title: "^\\s*title\\s*[:=]"
+
+globs:
+  - "**/*.md"
+
+ignores:
+  - "public/**"
+  - "resources/**"
+  - "archetypes/**"
