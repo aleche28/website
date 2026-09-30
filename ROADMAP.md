@@ -34,7 +34,7 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] Create the public repo `aleche28/website`
 - [x] Create a GoatCounter account (site code: `alessiochessa`)
 
-### 1. Project skeleton ← current
+### 1. Project skeleton
 
 - [x] Hugo project with the planned layout, versions pinned in `.mise.toml`
 - [x] Bare custom theme: `baseof`, `home`, `list`, `single`, `404`, header/footer partials
@@ -46,13 +46,15 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] CI: lint + build on every PR and push to `main`; Dependabot for Actions
 - [x] README with dev instructions, and this roadmap
 
-### 2. Design: minimal mode
+### 2. Design: minimal mode ← current
 
-- [ ] Self-host Inter + JetBrains Mono (woff2, Latin subset, `font-display: swap`)
-- [ ] Typography scale, spacing and final accent colour; light/dark polish
-- [ ] Syntax highlighting: Chroma classes with light and dark styles
-- [ ] Style tags, post meta, headings and blockquotes
-- [ ] Favicon
+- [x] Self-host Inter + JetBrains Mono (woff2, Latin subset, `font-display: swap`, body font preloaded)
+- [x] Typography scale, spacing and final accent colour; light/dark polish
+- [x] Syntax highlighting: Chroma classes with light and dark styles (`mise run gen:syntax`)
+- [x] Style tags, post meta, headings, blockquotes, tables and inline code
+- [x] Accessibility basics: skip link, visible focus styles, sufficient contrast in both themes
+- [x] Favicon (SVG + ICO + Apple touch icon)
+- [x] Draft style guide post for reviewing the design locally
 
 ### 3. Content: Home, About, Projects
 
@@ -108,6 +110,7 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 
 - [ ] `[data-mode="term"]` overrides of the CSS custom properties: monospace everywhere, dark background, green text
 - [ ] Prompt-style header (`~/alessio $ ls`), `#`/`##` heading prefixes, `[text]` links, `ls -l`-style post list
+- [ ] Code colours: `gen:syntax` needs a third block applying the dark Chroma styles under `[data-mode="term"]` (the current blocks follow only the system scheme); same for `theme-color`
 - [ ] `[ term ]` / `[ normal ]` toggle, choice saved in `localStorage`, applied by a tiny inline script before first paint (no flash)
 
 ### 11. CV
