@@ -1,0 +1,10 @@
+{{- /* Projects as title + summary + stack. Expects a page collection as context. */ -}}
+<ul class="project-list">
+  {{- range . }}
+    <li>
+      <a class="project-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{- with .Description }}<p>{{ . }}</p>{{ end }}
+      {{- with .Params.stack }}<p class="meta">{{ delimit . " · " }}</p>{{ end }}
+    </li>
+  {{- end }}
+</ul>

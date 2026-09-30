@@ -303,6 +303,19 @@ pre code {
   line-height: 1.5;
 }
 
+.intro p {
+  margin-bottom: var(--space-3);
+}
+
+.intro-links {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.home-section {
+  margin-bottom: var(--space-5);
+}
+
 .section-title {
   margin-top: 0;
   color: var(--muted);
@@ -354,6 +367,46 @@ pre code {
 
 .tags a:hover {
   color: var(--accent);
+}
+
+.project-list {
+  padding: 0;
+  list-style: none;
+}
+
+.project-list li {
+  margin: 0 0 var(--space-4);
+}
+
+.project-list p {
+  margin: var(--space-1) 0 0;
+}
+
+.project-title {
+  font-weight: 600;
+}
+
+.lead {
+  margin-bottom: var(--space-3);
+  color: var(--muted);
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-1) var(--space-4);
+  margin: 0;
+  font-size: 0.9375rem;
+}
+
+.facts dt {
+  color: var(--muted);
+}
+
+.facts dd {
+  margin: 0;
 }
 
 .empty {
