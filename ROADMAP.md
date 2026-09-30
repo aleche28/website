@@ -46,7 +46,7 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] CI: lint + build on every PR and push to `main`; Dependabot for Actions
 - [x] README with dev instructions, and this roadmap
 
-### 2. Design: minimal mode ← current
+### 2. Design: minimal mode
 
 - [x] Self-host Inter + JetBrains Mono (woff2, Latin subset, `font-display: swap`, body font preloaded)
 - [x] Typography scale, spacing and final accent color; light/dark polish
@@ -56,12 +56,13 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] Favicon (SVG + ICO + Apple touch icon)
 - [x] Draft style guide post for reviewing the design locally
 
-### 3. Content: Home, About, Projects
+### 3. Content: Home, About, Projects ← current
 
-- [ ] Home: intro, latest posts, social links
-- [ ] About: short bio, what I work on and what I'm interested in, contacts
-- [ ] Projects: GrepDocs (featured), B-AROL-O (FREISA, RUCHE); problem, stack, status, links. **Only shipped work.**
-- [ ] Decide which contacts are public (email? LinkedIn URL) and fill in `params.social`
+- [x] Home: intro, contact links with icons, projects, latest posts
+- [x] About: short bio, what I work on, background, contacts
+- [x] Projects: GrepDocs, B-AROL-O (FREISA, RUCHE); problem, stack, status, links. **Only shipped work.**
+- [x] Projects layouts: list ordered by `weight`, project page with status / stack / links
+- [x] Decide which contacts are public and fill in `params.social` (GitHub, LinkedIn, email)
 - [ ] Review of every page by me
 
 ### 4. Blog features
@@ -75,11 +76,11 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 
 - [ ] Open Graph and Twitter cards (Hugo's built-in templates), so links look good on LinkedIn
 - [ ] Per-page `description`; check the canonical URLs
-- [ ] Check `sitemap.xml` and `robots.txt` (already generated)
+- [x] Check `sitemap.xml` and `robots.txt` (`robots.txt` now points to the sitemap)
 
 ### 6. Quality gates in CI
 
-- [ ] Link checker (htmltest) on the built site
+- [ ] Link checker (htmltest) on the built site. Ignore sites that block automated requests but work in a browser: LinkedIn (HTTP 999) and Hackster (403); also Devpost if it fails (a reviewer saw 403, my check got 200)
 - [ ] Performance budget: fail CI if CSS + JS per page is over 30 KB (fonts excluded)
 - [ ] Manual Lighthouse run: target 100 across the board
 
@@ -131,6 +132,8 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [ ] Add it to the GitHub profile and LinkedIn
 
 ## Later (not before launch)
+
+- When the AROL platform is live: change "it goes to production soon" on About to say it's in production; once there are real usage numbers, add them to About and the CV
 
 - Search with Pagefind, once there are more than ~20 posts
 - Auto-generated social preview images

@@ -69,3 +69,4 @@ The post is created with `draft: true`: it shows in `mise run dev` but never in 
 
 - Code (templates, CSS, JS, config): [MIT](LICENSE).
 - Content (posts and page text in `content/`): [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+- Third-party assets keep their own licenses: Inter and JetBrains Mono ([SIL OFL 1.1](static/fonts/)), icons from [Bootstrap Icons](https://icons.getbootstrap.com/) ([MIT](assets/icons/LICENSE-bootstrap-icons.txt)).
