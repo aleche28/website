@@ -1,6 +1,16 @@
-{{- /* Contact links from params.social, separated by " · ". */ -}}
-{{- $links := slice }}
-{{- with site.Params.social.github }}{{ $links = $links | append (printf `<a href="%s" rel="me">GitHub</a>` .) }}{{ end }}
-{{- with site.Params.social.linkedin }}{{ $links = $links | append (printf `<a href="%s" rel="me">LinkedIn</a>` .) }}{{ end }}
-{{- with site.Params.social.email }}{{ $links = $links | append (printf `<a href="mailto:%s">Email</a>` .) }}{{ end }}
-{{- delimit $links " · " | safeHTML -}}
+{{- /*
+  Contact links from params.social.
+  Context: dict "icons" true|false. With icons: icon + label (home intro);
+  without: plain text links separated by " · " (footer).
+*/ -}}
+{{- $items := slice }}
+{{- with site.Params.social.github }}{{ $items = $items | append (dict "name" "GitHub" "url" . "icon" "github" "rel" "me") }}{{ end }}
+{{- with site.Params.social.linkedin }}{{ $items = $items | append (dict "name" "LinkedIn" "url" . "icon" "linkedin" "rel" "me") }}{{ end }}
+{{- with site.Params.social.email }}{{ $items = $items | append (dict "name" "Email" "url" (printf "mailto:%s" .) "icon" "email" "rel" "") }}{{ end }}
+{{- range $i, $item := $items }}
+  {{- if and $i (not $.icons) }} · {{ end -}}
+  <a href="{{ $item.url }}"{{ with $item.rel }} rel="{{ . }}"{{ end }}{{ if $.icons }} class="icon-link"{{ end }}>
+    {{- if $.icons }}{{ with resources.Get (printf "icons/%s.svg" $item.icon) }}{{ .Content | safeHTML }}{{ end }}{{ end -}}
+    {{ $item.name -}}
+  </a>
+{{- end }}

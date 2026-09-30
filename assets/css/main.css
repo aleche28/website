@@ -308,8 +308,28 @@ pre code {
 }
 
 .intro-links {
-  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
   font-size: 1rem;
+}
+
+.icon-link {
+  display: inline-flex;
+  gap: 0.45em;
+  align-items: center;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.icon-link:hover {
+  color: var(--accent);
+}
+
+.icon {
+  width: 1.05em;
+  height: 1.05em;
+  flex-shrink: 0;
 }
 
 .home-section {

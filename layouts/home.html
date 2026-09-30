@@ -1,7 +1,7 @@
 {{ define "main" }}
 <section class="intro">
   {{ .Content }}
-  <p class="intro-links">{{ partial "social-links.html" . }}</p>
+  <p class="intro-links">{{ partial "social-links.html" (dict "icons" true) }}</p>
 </section>
 
 {{- with (where site.RegularPages "Section" "projects").ByWeight }}

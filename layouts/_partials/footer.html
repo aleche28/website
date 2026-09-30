@@ -1,7 +1,7 @@
 <footer class="site-footer">
   <p>© {{ now.Year }} {{ site.Title }}</p>
   <p>
-    {{- partial "social-links.html" . }}
+    {{- partial "social-links.html" (dict "icons" false) }}
     {{- with site.GetPage "/blog" }}{{ with .OutputFormats.Get "rss" }} · <a href="{{ .RelPermalink }}">RSS</a>{{ end }}{{ end }}
   </p>
 </footer>
