@@ -4,6 +4,7 @@ date: 2026-01-01
 draft: true # dev-only kitchen sink for reviewing the design; never published
 description: Every element a post can contain, for design review.
 tags: [go, meta]
+toc: true
 ---
 
 This page exists to review typography and components with `mise run dev`. It is a **draft**, so it is never part of the production build. Body text uses _Inter_, and `inline code` uses JetBrains Mono. Here is [a link](https://gohugo.io/) inside a sentence.
