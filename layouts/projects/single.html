@@ -1,0 +1,17 @@
+{{ define "main" }}
+<article>
+  <header class="post-header">
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    <dl class="facts">
+      {{- with .Params.status }}<dt>Status</dt><dd>{{ . }}</dd>{{ end }}
+      {{- with .Params.stack }}<dt>Stack</dt><dd>{{ delimit . " · " }}</dd>{{ end }}
+      {{- with .Params.links }}
+        <dt>Links</dt>
+        <dd>{{ range $i, $l := . }}{{ if $i }} · {{ end }}<a href="{{ $l.url }}">{{ $l.name }}</a>{{ end }}</dd>
+      {{- end }}
+    </dl>
+  </header>
+  {{ .Content }}
+</article>
+{{ end }}

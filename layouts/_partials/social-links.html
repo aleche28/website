@@ -1,0 +1,6 @@
+{{- /* Contact links from params.social, separated by " · ". */ -}}
+{{- $links := slice }}
+{{- with site.Params.social.github }}{{ $links = $links | append (printf `<a href="%s" rel="me">GitHub</a>` .) }}{{ end }}
+{{- with site.Params.social.linkedin }}{{ $links = $links | append (printf `<a href="%s" rel="me">LinkedIn</a>` .) }}{{ end }}
+{{- with site.Params.social.email }}{{ $links = $links | append (printf `<a href="mailto:%s">Email</a>` .) }}{{ end }}
+{{- delimit $links " · " | safeHTML -}}

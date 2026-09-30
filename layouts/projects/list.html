@@ -1,0 +1,9 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+{{- with .Pages.ByWeight }}
+  {{ partial "project-list.html" . }}
+{{- else }}
+  <p class="empty">{{ .Params.emptyMessage | default "Nothing here yet." }}</p>
+{{- end }}
+{{ end }}
