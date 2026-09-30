@@ -1,0 +1,48 @@
+{{- /*
+  Based on Hugo's embedded rss.xml (v0.167.0), with three changes:
+  - items carry the full post, not the summary;
+  - root-relative href/src in the post are made absolute, since feed readers
+    don't resolve them against the site;
+  - channel titles read "Blog · Alessio Chessa" and "#go · Alessio Chessa".
+  Only the blog section and tag pages have an RSS output (see [outputs] in
+  hugo.toml).
+*/ -}}
+{{- $pages := .RegularPages }}
+{{- if eq .Kind "term" }}
+  {{- $pages = .Pages }}
+{{- end }}
+{{- $limit := site.Config.Services.RSS.Limit }}
+{{- if ge $limit 1 }}
+  {{- $pages = $pages | first $limit }}
+{{- end }}
+{{- $title := .Title }}
+{{- if eq .Kind "term" }}
+  {{- $title = printf "#%s" .Data.Term }}
+{{- end }}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ $title }} · {{ site.Title }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>{{ with .Description }}{{ . }}{{ else }}Posts tagged {{ $title }} on {{ site.Title }}{{ end }}</description>
+    <generator>Hugo</generator>
+    <language>{{ site.Language.Locale }}</language>
+    <copyright>© {{ site.Title }}, CC BY 4.0</copyright>
+    {{- with $pages }}
+    <lastBuildDate>{{ (index .ByLastmod.Reverse 0).Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+    {{- end }}
+    {{- with .OutputFormats.Get "rss" }}
+    {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{- end }}
+    {{- range $pages }}
+    {{- $content := .Content | replaceRE `(href|src)="/([^/])` (printf `$1="%s$2` site.BaseURL) }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <guid>{{ .Permalink }}</guid>
+      <description>{{ $content | transform.XMLEscape | safeHTML }}</description>
+    </item>
+    {{- end }}
+  </channel>
+</rss>

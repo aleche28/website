@@ -66,4 +66,8 @@ A code block without a language:
 
 ---
 
+An image from the page bundle, and a [site-relative link](/about/); both must become absolute URLs in the RSS feed:
+
+![A placeholder diagram](diagram.svg)
+
 A final paragraph after a horizontal rule.
