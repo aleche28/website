@@ -41,9 +41,9 @@ Without shell activation, prefix other commands with `mise exec --`, e.g. `mise 
 
 ```text
 .
-├── hugo.toml             # site config: menus, params
+├── hugo.toml             # site config: menus, params, feeds
 ├── content/              # Markdown pages; blog posts are page bundles in content/blog/
-├── layouts/              # custom theme: baseof, home, list, single, 404, _partials/
+├── layouts/              # custom theme: baseof, home, list, single, taxonomy, term, rss.xml, _partials/
 ├── assets/css/           # fonts, syntax (generated) and main styles, bundled + fingerprinted by Hugo
 ├── static/               # files copied as-is: self-hosted fonts, favicons
 ├── archetypes/blog.md    # template for new posts
@@ -57,6 +57,14 @@ mise exec -- hugo new content blog/2026-11-some-slug/index.md
 ```
 
 The post is created with `draft: true`: it shows in `mise run dev` but never in the production build. To publish, remove `draft: true` and merge to `main`.
+
+Front matter options:
+
+- `tags`: lowercase, e.g. `[go, observability]`. Each tag gets a page (`/tags/go/`) and its own feed (`/tags/go/index.xml`).
+- `toc: true`: shows a table of contents built from the `##` and `###` headings. Use it for long posts.
+- `description`: one sentence, used for the meta description.
+
+Published posts go into the RSS feed at `/blog/index.xml` with their full content. Images in the post's folder (`![alt](diagram.png)`) and site links (`/about/`) get absolute URLs in the feed.
 
 `content/blog/styleguide/` is a permanent draft with every element a post can contain (headings, lists, code, tables, ...). Use it to review design changes locally at <http://localhost:1313/blog/styleguide/>.
 
