@@ -1,8 +1,9 @@
 <footer class="site-footer">
+  <p>© {{ now.Year }} {{ site.Title }}</p>
   <p>
     {{- with site.Params.social.github }}<a href="{{ . }}" rel="me">GitHub</a>{{ end }}
     {{- with site.Params.social.linkedin }} · <a href="{{ . }}" rel="me">LinkedIn</a>{{ end }}
     {{- with site.Params.social.email }} · <a href="mailto:{{ . }}">Email</a>{{ end }}
+    {{- with site.GetPage "/blog" }}{{ with .OutputFormats.Get "rss" }} · <a href="{{ .RelPermalink }}">RSS</a>{{ end }}{{ end }}
   </p>
-  <p>© {{ now.Year }} {{ site.Title }}</p>
 </footer>
