@@ -1,0 +1,125 @@
+/*
+ * Bare theme. Every colour and font is a custom property, so a later mode
+ * (dark, and term mode via [data-mode="term"]) only has to override variables.
+ */
+
+:root {
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --measure: 68ch;
+
+  --bg: #fdfdfc;
+  --fg: #1f2328;
+  --muted: #656d76;
+  --accent: #2f5f98;
+  --border: #d8dee4;
+  --code-bg: #f3f4f6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15171a;
+    --fg: #e6e8eb;
+    --muted: #9aa3ad;
+    --accent: #7fa8d9;
+    --border: #30363d;
+    --code-bg: #1f2328;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.site-title {
+  color: var(--fg);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.site-header nav a[aria-current="page"] {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.meta,
+.post-list time {
+  color: var(--muted);
+}
+
+.post-list {
+  padding: 0;
+  list-style: none;
+}
+
+.post-list li {
+  display: flex;
+  gap: 1rem;
+}
+
+.post-list time {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+  background: var(--code-bg);
+  border-radius: 4px;
+}
+
+.site-footer {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9em;
+}

@@ -1,0 +1,8 @@
+<footer class="site-footer">
+  <p>
+    {{- with site.Params.social.github }}<a href="{{ . }}" rel="me">GitHub</a>{{ end }}
+    {{- with site.Params.social.linkedin }} · <a href="{{ . }}" rel="me">LinkedIn</a>{{ end }}
+    {{- with site.Params.social.email }} · <a href="mailto:{{ . }}">Email</a>{{ end }}
+  </p>
+  <p>© {{ now.Year }} {{ site.Title }}</p>
+</footer>

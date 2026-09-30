@@ -1,0 +1,9 @@
+{{- /* Renders a list of pages as "date — title". Expects a page collection as context. */ -}}
+<ul class="post-list">
+  {{- range . }}
+    <li>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+  {{- end }}
+</ul>
