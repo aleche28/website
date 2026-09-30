@@ -29,6 +29,12 @@ noClasses = false
 [markup.goldmark.renderer]
 unsafe = false
 
+# Posts opt in with `toc: true` in front matter.
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 3
+ordered = false
+
 # Resolve images in page bundles to full paths, so they also work in the feed.
 [markup.goldmark.renderHooks.image]
 useEmbedded = "fallback"
