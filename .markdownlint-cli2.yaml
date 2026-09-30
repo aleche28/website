@@ -3,6 +3,9 @@ config:
   default: true
   # Prose is written one paragraph per line; don't enforce a line length.
   MD013: false
+  # Go code is gofmt-formatted with tabs; allow them inside code blocks only.
+  MD010:
+    code_blocks: false
   # Posts use front matter `title` as the H1.
   MD025:
     front_matter_title: "^\\s*title\\s*[:=]"
