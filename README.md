@@ -33,7 +33,7 @@ Tool versions (Hugo, Node, markdownlint) are pinned in [`.mise.toml`](.mise.toml
 | `mise run build`      | Production build into `public/` (fails on any Hugo warning)   |
 | `mise run lint`       | Lint all Markdown with markdownlint                           |
 | `mise run check`      | `lint` + `build`: the same checks CI runs on every PR         |
-| `mise run gen:syntax` | Regenerate `assets/css/syntax.css` (code colours) from Chroma |
+| `mise run gen:syntax` | Regenerate `assets/css/syntax.css` (code colors) from Chroma  |
 
 Without shell activation, prefix other commands with `mise exec --`, e.g. `mise exec -- hugo version`.
 

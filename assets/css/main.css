@@ -1,5 +1,5 @@
 /*
- * Minimal, text-first theme. Every colour and font is a custom property, so
+ * Minimal, text-first theme. Every color and font is a custom property, so
  * dark mode (and later term mode, via [data-mode="term"]) only overrides
  * variables.
  */
