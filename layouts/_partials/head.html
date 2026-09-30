@@ -1,7 +1,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ if .IsHome }}{{ site.Title }}{{ with site.Params.role }} · {{ . }}{{ end }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+{{- $title := .Title }}
+{{- $description := .Description | default site.Params.description }}
+{{- if eq .Kind "term" }}
+  {{- $title = printf "#%s" .Data.Term }}
+  {{- $description = printf "Posts tagged #%s on %s." .Data.Term site.Title }}
+{{- end }}
+<title>{{ if .IsHome }}{{ site.Title }}{{ with site.Params.role }} · {{ . }}{{ end }}{{ else }}{{ $title }} · {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ $description }}">
 <link rel="canonical" href="{{ .Permalink }}">
 <meta name="theme-color" content="#fdfdfc" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131519" media="(prefers-color-scheme: dark)">

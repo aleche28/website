@@ -1,0 +1,15 @@
+{{ define "main" }}
+<header class="post-header">
+  <h1>#{{ .Data.Term }}</h1>
+  <p class="meta">
+    {{- $n := len .Pages }}
+    {{- $n }} {{ cond (eq $n 1) "post" "posts" }}
+    {{- with .OutputFormats.Get "rss" }} · <a href="{{ .RelPermalink }}">RSS</a>{{ end }}
+    {{- with .Parent }} · <a href="{{ .RelPermalink }}">All tags</a>{{ end }}
+  </p>
+</header>
+{{- range .Pages.GroupByDate "2006" }}
+  <h2 class="section-title">{{ .Key }}</h2>
+  {{ partial "post-list.html" .Pages }}
+{{- end }}
+{{ end }}
