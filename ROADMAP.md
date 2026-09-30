@@ -19,12 +19,12 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 | Theme     | Custom and minimal, in this repo; no third-party theme            |
 | Style     | Text-first by default, plus a "term mode" toggle                  |
 | Fonts     | Inter + JetBrains Mono, self-hosted (no Google Fonts)             |
-| Colours   | Muted blue accent, light/dark from the system; green in term mode |
+| Colors    | Muted blue accent, light/dark from the system; green in term mode |
 | Hosting   | GitHub Pages, deployed by GitHub Actions                          |
 | Domain    | `alessiochessa.dev`, registered at Cloudflare                     |
 | Language  | English only                                                      |
 | Analytics | GoatCounter (no cookies, no banner)                               |
-| Licence   | MIT for code, CC BY 4.0 for content                               |
+| License   | MIT for code, CC BY 4.0 for content                               |
 
 ## Steps
 
@@ -42,14 +42,14 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] Stub pages: Home, About, Projects, Blog (shows "coming soon" while empty)
 - [x] Blog archetype (`draft: true`) and a local draft preview with `mise run dev`
 - [x] `mise` tasks: `dev`, `build`, `lint`, `check`
-- [x] markdownlint config, `.editorconfig`, `.gitignore`, licence
+- [x] markdownlint config, `.editorconfig`, `.gitignore`, license
 - [x] CI: lint + build on every PR and push to `main`; Dependabot for Actions
 - [x] README with dev instructions, and this roadmap
 
 ### 2. Design: minimal mode ← current
 
 - [x] Self-host Inter + JetBrains Mono (woff2, Latin subset, `font-display: swap`, body font preloaded)
-- [x] Typography scale, spacing and final accent colour; light/dark polish
+- [x] Typography scale, spacing and final accent color; light/dark polish
 - [x] Syntax highlighting: Chroma classes with light and dark styles (`mise run gen:syntax`)
 - [x] Style tags, post meta, headings, blockquotes, tables and inline code
 - [x] Accessibility basics: skip link, visible focus styles, sufficient contrast in both themes
@@ -110,7 +110,7 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 
 - [ ] `[data-mode="term"]` overrides of the CSS custom properties: monospace everywhere, dark background, green text
 - [ ] Prompt-style header (`~/alessio $ ls`), `#`/`##` heading prefixes, `[text]` links, `ls -l`-style post list
-- [ ] Code colours: `gen:syntax` needs a third block applying the dark Chroma styles under `[data-mode="term"]` (the current blocks follow only the system scheme); same for `theme-color`
+- [ ] Code colors: `gen:syntax` needs a third block applying the dark Chroma styles under `[data-mode="term"]` (the current blocks follow only the system scheme); same for `theme-color`
 - [ ] `[ term ]` / `[ normal ]` toggle, choice saved in `localStorage`, applied by a tiny inline script before first paint (no flash)
 
 ### 11. CV

@@ -27,8 +27,8 @@ description = "Everything CI runs"
 depends = ["lint", "build"]
 
 [tasks."gen:syntax"]
-description = "Regenerate assets/css/syntax.css (Chroma code colours, light + dark)"
-# Each style is scoped to its own colour scheme: a token styled in one theme
+description = "Regenerate assets/css/syntax.css (Chroma code colors, light + dark)"
+# Each style is scoped to its own color scheme: a token styled in one theme
 # but not the other must not leak across (e.g. near-black punctuation on dark).
 run = '''
 {
