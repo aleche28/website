@@ -2,6 +2,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {{- $title := .Title }}
 {{- $description := .Description | default site.Params.description }}
+{{- if and .IsPage (eq .Section "blog") (not .Description) }}
+  {{- /* Fails the production build (--panicOnWarning); only a warning in dev. */}}
+  {{- warnf "%s: add a description; it is used by search results and link previews" .File.Path }}
+{{- end }}
 {{- if .IsHome }}
   {{- $title = site.Title }}
 {{- else if eq .Kind "term" }}
@@ -10,8 +14,12 @@
 {{- end }}
 <title>{{ if .IsHome }}{{ site.Title }}{{ with site.Params.role }} · {{ . }}{{ end }}{{ else }}{{ $title }} · {{ site.Title }}{{ end }}</title>
 <meta name="description" content="{{ $description }}">
-<link rel="canonical" href="{{ .Permalink }}">
-{{- partial "social-meta.html" (dict "page" . "title" $title "description" $description) }}
+{{- if eq .Kind "404" }}
+  <meta name="robots" content="noindex">
+{{- else }}
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{- partial "social-meta.html" (dict "page" . "title" $title "description" $description) }}
+{{- end }}
 <meta name="theme-color" content="#fdfdfc" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131519" media="(prefers-color-scheme: dark)">
 <link rel="preload" href="{{ "fonts/inter-latin-wght-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
