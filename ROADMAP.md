@@ -65,18 +65,18 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] Decide which contacts are public and fill in `params.social` (GitHub, LinkedIn, email)
 - [ ] Review of every page by me
 
-### 4. Blog features ← current
+### 4. Blog features
 
 - [x] RSS at `/blog/index.xml` with full post content; per-tag feeds (`/tags/go/index.xml`)
 - [x] Drop the RSS feeds that aren't needed (home, sections other than the blog, `/tags/`); the blog feed is linked for autodiscovery on every page
 - [x] Table of contents for long posts: opt-in with `toc: true`
 - [x] Nicer tag list and tag pages: `/tags/` with counts, `#tag` pages with their feed, tag list on `/blog/`
 
-### 5. SEO and sharing
+### 5. SEO and sharing ← current
 
-- [ ] Open Graph and Twitter cards (Hugo's built-in templates), so links look good on LinkedIn
-- [ ] Per-page `description`; check the canonical URLs
-- [x] Check `sitemap.xml` and `robots.txt` (`robots.txt` now points to the sitemap)
+- [x] Open Graph and Twitter cards, so links look good on LinkedIn. Own partial instead of Hugo's built-ins: previews reuse the page's `<title>`/description, only posts are `article`; one default preview image (`mise run gen:og`)
+- [x] Per-page `description` (a published post without one fails the build); canonical URLs checked, `404` gets `noindex` and no canonical
+- [x] Check `sitemap.xml` and `robots.txt` (`robots.txt` points to the sitemap; `/tags/` is left out of the sitemap until there are tags)
 
 ### 6. Quality gates in CI
 
@@ -105,6 +105,7 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 
 - [ ] Every page reviewed by me
 - [ ] Lighthouse and link checks green on the live URL
+- [ ] Link previews look right in LinkedIn's Post Inspector (home, About, a project)
 - [ ] Merge → live
 
 ### 10. Term mode
