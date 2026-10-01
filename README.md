@@ -34,6 +34,7 @@ Tool versions (Hugo, Node, markdownlint) are pinned in [`.mise.toml`](.mise.toml
 | `mise run lint`       | Lint all Markdown with markdownlint                           |
 | `mise run check`      | `lint` + `build`: the same checks CI runs on every PR         |
 | `mise run gen:syntax` | Regenerate `assets/css/syntax.css` (code colors) from Chroma  |
+| `mise run gen:og`     | Regenerate the link-preview image from `tools/og-image.html`  |
 
 Without shell activation, prefix other commands with `mise exec --`, e.g. `mise exec -- hugo version`.
 
@@ -43,10 +44,12 @@ Without shell activation, prefix other commands with `mise exec --`, e.g. `mise 
 .
 ├── hugo.toml             # site config: menus, params, feeds
 ├── content/              # Markdown pages; blog posts are page bundles in content/blog/
-├── layouts/              # custom theme: baseof, home, list, single, taxonomy, term, rss.xml, _partials/
+├── layouts/              # custom theme: baseof, home, list, single, taxonomy, term, rss.xml, sitemap.xml, _partials/
 ├── assets/css/           # fonts, syntax (generated) and main styles, bundled + fingerprinted by Hugo
+├── assets/images/og.png  # default link-preview image (generated, see tools/)
 ├── static/               # files copied as-is: self-hosted fonts, favicons
 ├── archetypes/blog.md    # template for new posts
+├── tools/og-image.html   # source of the link-preview image (mise run gen:og)
 └── .github/workflows/    # CI
 ```
 
@@ -62,7 +65,7 @@ Front matter options:
 
 - `tags`: lowercase, e.g. `[go, observability]`. Each tag gets a page (`/tags/go/`) and its own feed (`/tags/go/index.xml`).
 - `toc: true`: shows a table of contents built from the `##` and `###` headings. Use it for long posts.
-- `description`: one sentence, used for the meta description.
+- `description`: one sentence, used for search results and link previews. Required: a published post without one fails the build.
 
 Published posts go into the RSS feed at `/blog/index.xml` with their full content. Images in the post's folder (`![alt](diagram.png)`) and site links (`/about/`) get absolute URLs in the feed.
 
