@@ -32,6 +32,9 @@ jobs:
       - name: Build site
         run: mise run build
 
+      - name: Check performance budget
+        run: mise run budget
+
       - name: Check links
         run: mise run links
         env:

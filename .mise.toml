@@ -28,9 +28,14 @@ description = "Check every link in the build, internal and external (config: lyc
 depends = ["build"]
 run = 'lychee --root-dir "$PWD/public" --no-progress "public/**/*.html"'
 
+[tasks.budget]
+description = "Fail if any page ships more than 30 KB of CSS + JS"
+depends = ["build"]
+run = "node tools/check-budget.mjs"
+
 [tasks.check]
 description = "Everything CI runs"
-depends = ["lint", "links"]
+depends = ["lint", "budget", "links"]
 
 [tasks."gen:syntax"]
 description = "Regenerate assets/css/syntax.css (Chroma code colors, light + dark)"
