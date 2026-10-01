@@ -6,7 +6,7 @@ Progress and next steps are tracked in [`ROADMAP.md`](ROADMAP.md).
 
 ## Local development
 
-Tool versions (Hugo, Node, markdownlint) are pinned in [`.mise.toml`](.mise.toml) and shared with CI.
+Tool versions (Hugo, Node, markdownlint, lychee) are pinned in [`.mise.toml`](.mise.toml) and shared with CI.
 
 1. Install [mise](https://mise.jdx.dev/) (`brew install mise`) and, optionally, [activate it in your shell](https://mise.jdx.dev/getting-started.html#activate-mise).
 2. Trust the repo config and install the tools:
@@ -32,7 +32,9 @@ Tool versions (Hugo, Node, markdownlint) are pinned in [`.mise.toml`](.mise.toml
 | `mise run preview`    | Same as production: no drafts, on <http://localhost:1313>     |
 | `mise run build`      | Production build into `public/` (fails on any Hugo warning)   |
 | `mise run lint`       | Lint all Markdown with markdownlint                           |
-| `mise run check`      | `lint` + `build`: the same checks CI runs on every PR         |
+| `mise run links`      | Check every link in the build with lychee (`lychee.toml`)     |
+| `mise run budget`     | Fail if a page ships more than 30 KB of CSS + JS              |
+| `mise run check`      | `lint`, `build`, `budget`, `links`: what CI runs on every PR  |
 | `mise run gen:syntax` | Regenerate `assets/css/syntax.css` (code colors) from Chroma  |
 | `mise run gen:og`     | Regenerate the link-preview image from `tools/og-image.html`  |
 
@@ -49,8 +51,9 @@ Without shell activation, prefix other commands with `mise exec --`, e.g. `mise 
 ├── assets/images/og.png  # default link-preview image (generated, see tools/)
 ├── static/               # files copied as-is: self-hosted fonts, favicons
 ├── archetypes/blog.md    # template for new posts
-├── tools/og-image.html   # source of the link-preview image (mise run gen:og)
-└── .github/workflows/    # CI
+├── tools/                # og-image.html (source of the preview image), check-budget.mjs
+├── lychee.toml           # link checker config: timeouts, retries, ignored sites
+└── .github/workflows/    # CI: on every PR, on push to main, and weekly for link rot
 ```
 
 ## Writing a post

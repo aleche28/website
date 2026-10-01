@@ -72,17 +72,17 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] Table of contents for long posts: opt-in with `toc: true`
 - [x] Nicer tag list and tag pages: `/tags/` with counts, `#tag` pages with their feed, tag list on `/blog/`
 
-### 5. SEO and sharing ← current
+### 5. SEO and sharing
 
 - [x] Open Graph and Twitter cards, so links look good on LinkedIn. Own partial instead of Hugo's built-ins: previews reuse the page's `<title>`/description, only posts are `article`; one default preview image (`mise run gen:og`)
 - [x] Per-page `description` (a published post without one fails the build); canonical URLs checked, `404` gets `noindex` and no canonical
 - [x] Check `sitemap.xml` and `robots.txt` (`robots.txt` points to the sitemap; `/tags/` is left out of the sitemap until there are tags)
 
-### 6. Quality gates in CI
+### 6. Quality gates in CI ← current
 
-- [ ] Link checker (htmltest) on the built site. Ignore sites that block automated requests but work in a browser: LinkedIn (HTTP 999) and Hackster (403); also Devpost if it fails (a reviewer saw 403, my check got 200)
-- [ ] Performance budget: fail CI if CSS + JS per page is over 30 KB (fonts excluded)
-- [ ] Manual Lighthouse run: target 100 across the board
+- [x] Link checker on the built site: [lychee](https://lychee.cli.rs) (maintained, unlike htmltest), internal links + anchors + external links, on every PR and weekly. Ignores sites that block automated requests but work in a browser: LinkedIn (HTTP 999) and Hackster (403); Devpost passes, so it is checked
+- [x] Performance budget: fail CI if CSS + JS per page is over 30 KB (fonts excluded); today 11.5 KB
+- [x] Manual Lighthouse run (local build, mobile + desktop): 100 everywhere; the style guide draft gets 99 for performance on mobile, from the local test server (no compression)
 
 ### 7. Deploy to GitHub Pages
 
@@ -124,6 +124,7 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 ### 12. First post
 
 - [ ] Choose the topic
+- [ ] If it has images: a render hook adding `width`/`height` and lazy loading (Lighthouse flags unsized images)
 - [ ] Write it, check it (one-sentence takeaway, snippets compile, nothing beyond CV-level detail about work, links work), publish
 - [ ] Share on LinkedIn
 
