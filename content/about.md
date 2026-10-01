@@ -1,6 +1,6 @@
 ---
 title: About
-description: Who I am and what I work on.
+description: "Backend engineer in Turin: what I work on at AROL, the projects I build, and my background."
 ---
 
 I'm Alessio, a backend engineer in Turin, Italy. I like to own a system across its whole life: designing it, building it, shipping it, then watching how it performs in production and improving it as it goes.
