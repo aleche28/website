@@ -43,3 +43,14 @@ run = '''
   echo "}"
 } > assets/css/syntax.css
 '''
+
+[tasks."gen:og"]
+description = "Regenerate assets/images/og.png (link-preview image) from tools/og-image.html"
+# Needs Chrome or Chromium; set CHROME to its path if it isn't the macOS default.
+run = '''
+"${CHROME:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}" \
+  --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 \
+  --allow-file-access-from-files --virtual-time-budget=3000 \
+  --window-size=1200,630 --screenshot="$PWD/assets/images/og.png" \
+  "file://$PWD/tools/og-image.html"
+'''

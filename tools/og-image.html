@@ -1,0 +1,71 @@
+<!doctype html>
+<!--
+  Source of assets/images/og.png, the default link-preview image (1200×630).
+  Regenerate with `mise run gen:og` after changing this file or the site title
+  and description in hugo.toml (the text below repeats them).
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face {
+    font-family: "Inter";
+    font-weight: 100 900;
+    src: url("../static/fonts/inter-latin-wght-normal.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "JetBrains Mono";
+    font-weight: 100 800;
+    src: url("../static/fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2");
+  }
+  html, body {
+    margin: 0;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 88px 96px 80px;
+    background: #fdfdfc;
+    color: #1f2328;
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  img {
+    width: 80px;
+    height: 80px;
+  }
+  h1 {
+    margin: auto 0 24px;
+    font-size: 84px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+  p {
+    margin: 0;
+    max-width: 920px;
+    color: #5c646d;
+    font-size: 38px;
+    line-height: 1.35;
+  }
+  footer {
+    margin-top: auto;
+    padding-top: 28px;
+    border-top: 2px solid #e1e4e8;
+    color: #2f5f98;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 28px;
+  }
+</style>
+</head>
+<body>
+  <img src="../static/favicon.svg" alt="">
+  <h1>Alessio Chessa</h1>
+  <p>Backend engineer working on delivery and observability. Writing Go.</p>
+  <footer>alessiochessa.dev</footer>
+</body>
+</html>
