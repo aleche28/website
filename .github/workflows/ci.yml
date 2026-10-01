@@ -4,6 +4,10 @@ on:
   pull_request:
   push:
     branches: [main]
+  # Weekly run to catch external links that broke since the last change.
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -27,3 +31,9 @@ jobs:
 
       - name: Build site
         run: mise run build
+
+      - name: Check links
+        run: mise run links
+        env:
+          # Avoids GitHub's rate limit on unauthenticated requests.
+          GITHUB_TOKEN: ${{ github.token }}

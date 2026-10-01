@@ -3,6 +3,7 @@
 
 [tools]
 hugo = "0.167.0"
+lychee = "0.24.2"
 node = "22.12.0"
 "npm:markdownlint-cli2" = "0.23.3"
 
@@ -22,9 +23,14 @@ run = "hugo --gc --minify --panicOnWarning --cleanDestinationDir"
 description = "Lint Markdown files"
 run = "markdownlint-cli2"
 
+[tasks.links]
+description = "Check every link in the build, internal and external (config: lychee.toml)"
+depends = ["build"]
+run = 'lychee --root-dir "$PWD/public" --no-progress "public/**/*.html"'
+
 [tasks.check]
 description = "Everything CI runs"
-depends = ["lint", "build"]
+depends = ["lint", "links"]
 
 [tasks."gen:syntax"]
 description = "Regenerate assets/css/syntax.css (Chroma code colors, light + dark)"
