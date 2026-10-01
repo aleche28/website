@@ -1,0 +1,26 @@
+# Link checker config (https://lychee.cli.rs), used by `mise run links`.
+
+# Check anchors too (#section), on this site and elsewhere.
+include_fragments = "anchor-only"
+
+# A link to a directory (/about/) is valid only if it has an index.html,
+# as it would be on the web server.
+index_files = ["index.html"]
+
+# Be patient with slow or briefly failing sites before failing the build.
+max_retries = 3
+retry_wait_time = 2
+timeout = 20
+
+# Remember results for a day (.lycheecache), so local reruns are fast.
+cache = true
+max_cache_age = "1d"
+
+exclude = [
+  # Absolute URLs to this site (canonical, og:image, feed links) point at the
+  # deployed site, not at the build being checked; internal links are relative.
+  '^https://alessiochessa\.dev/',
+  # Sites that block automated requests but work in a browser.
+  '^https://www\.linkedin\.com/',  # HTTP 999
+  '^https://www\.hackster\.io/',   # HTTP 403
+]
