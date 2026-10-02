@@ -7,6 +7,10 @@ enableRobotsTXT = true
 [params]
 description = "Backend engineer working on delivery and observability. Writing Go."
 role = "Backend engineer"
+# Until go-live: every page says `noindex`, so search engines skip the site
+# while it's being reviewed at its real URL. Removing it is the last go-live
+# gate item in ROADMAP.md.
+noindex = true
 
 [params.social]
 github = "https://github.com/aleche28"
