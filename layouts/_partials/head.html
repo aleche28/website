@@ -14,9 +14,10 @@
 {{- end }}
 <title>{{ if .IsHome }}{{ site.Title }}{{ with site.Params.role }} · {{ . }}{{ end }}{{ else }}{{ $title }} · {{ site.Title }}{{ end }}</title>
 <meta name="description" content="{{ $description }}">
-{{- if eq .Kind "404" }}
+{{- if or (eq .Kind "404") site.Params.noindex }}
   <meta name="robots" content="noindex">
-{{- else }}
+{{- end }}
+{{- if ne .Kind "404" }}
   <link rel="canonical" href="{{ .Permalink }}">
   {{- partial "social-meta.html" (dict "page" . "title" $title "description" $description) }}
 {{- end }}
