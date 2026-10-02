@@ -78,15 +78,16 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] Per-page `description` (a published post without one fails the build); canonical URLs checked, `404` gets `noindex` and no canonical
 - [x] Check `sitemap.xml` and `robots.txt` (`robots.txt` points to the sitemap; `/tags/` is left out of the sitemap until there are tags)
 
-### 6. Quality gates in CI ← current
+### 6. Quality gates in CI
 
 - [x] Link checker on the built site: [lychee](https://lychee.cli.rs) (maintained, unlike htmltest), internal links + anchors + external links, on every PR and weekly. Ignores sites that block automated requests but work in a browser: LinkedIn (HTTP 999) and Hackster (403); Devpost passes, so it is checked
 - [x] Performance budget: fail CI if CSS + JS per page is over 30 KB (fonts excluded); today 11.5 KB
 - [x] Manual Lighthouse run (local build, mobile + desktop): 100 everywhere; the style guide draft gets 99 for performance on mobile, from the local test server (no compression)
 
-### 7. Deploy to GitHub Pages
+### 7. Deploy to GitHub Pages ← current
 
-- [ ] Deploy workflow: on push to `main` → build → upload Pages artifact → deploy
+- [x] Deploy workflow: on push to `main` → build → upload Pages artifact → deploy; the base URL comes from Pages, so `aleche28.github.io/website/` works until the custom domain is set (home link, Markdown links and font URLs made subpath-safe)
+- [x] Until go-live, every page is `noindex` (`params.noindex` in `hugo.toml`)
 - [ ] Repo Settings → Pages → Source: GitHub Actions
 - [ ] Branch protection on `main`: PR required, CI must pass
 
@@ -106,7 +107,7 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [ ] Every page reviewed by me
 - [ ] Lighthouse and link checks green on the live URL
 - [ ] Link previews look right in LinkedIn's Post Inspector (home, About, a project)
-- [ ] Merge → live
+- [ ] Remove `noindex = true` from `hugo.toml`; merge → live
 
 ### 10. Term mode
 
