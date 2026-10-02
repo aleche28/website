@@ -5,7 +5,7 @@ title = "Alessio Chessa"
 enableRobotsTXT = true
 
 [params]
-description = "Backend engineer working on delivery and observability. Writing Go."
+description = "Backend engineer who builds, ships and observes systems. C#/.NET at work, Go on the side."
 role = "Backend engineer"
 # Until go-live: every page says `noindex`, so search engines skip the site
 # while it's being reviewed at its real URL. Removing it is the last go-live
