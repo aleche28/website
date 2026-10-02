@@ -7,9 +7,8 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 ## Goals
 
 - **What it is:** a showcase of who I am, the projects I build and what I write about Go, observability and backend engineering. People land here from my CV, LinkedIn and GitHub.
-- **Tone:** let the work speak for itself. No "open to work" or job-seeking messaging.
-- **Over time:** posts keep coming at a steady pace (one every 6–8 weeks), and the site needs close to zero maintenance between posts.
-- **Non-goals:** comments, newsletter, JS framework, CMS. Nothing that competes with GrepDocs for time.
+- **Over time:** the site needs close to zero maintenance between posts.
+- **Non-goals:** comments, newsletter, JS framework, CMS.
 
 ## Decisions
 
@@ -129,7 +128,7 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 
 - [ ] Choose the topic
 - [ ] If it has images: a render hook adding `width`/`height` and lazy loading (Lighthouse flags unsized images)
-- [ ] Write it, check it (one-sentence takeaway, snippets compile, nothing beyond CV-level detail about work, links work), publish
+- [ ] Write it, check it (one-sentence takeaway, snippets compile, links work), publish
 - [ ] Share on LinkedIn
 
 ### 13. Link it everywhere
@@ -139,14 +138,6 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 
 ## Later (not before launch)
 
-- When the AROL platform is live: change "it goes to production soon" on About to say it's in production; once there are real usage numbers, add them to About and the CV
-
 - Search with Pagefind, once there are more than ~20 posts
 - Auto-generated social preview images
 - Term mode easter egg (keyboard shortcut / typed commands), only if it's fun
-
-## Content guardrails
-
-- **Work:** nothing beyond the level of detail in my CV. No internal systems, architecture or names from any employer.
-- **Only what is shipped:** a technology appears on the site only once it's in a real project.
-- **Post format:** 800–1500 words. Problem → options considered → decision → what I'd do differently. Real code, not toy examples.

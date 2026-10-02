@@ -17,3 +17,4 @@ ignores:
   - "public/**"
   - "resources/**"
   - "archetypes/**"
+  - "*.local.md"
