@@ -78,6 +78,8 @@ Published posts go into the RSS feed at `/blog/index.xml` with their full conten
 
 Every push to `main` is built and published to GitHub Pages by [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). It can also be started by hand from the Actions tab. The checks run in CI on the pull request, so the deploy workflow only builds and publishes.
 
+The site address comes from the Pages settings at build time. After changing the custom domain, re-run the Deploy workflow, otherwise the live pages keep pointing at the old address.
+
 Until go-live, `noindex = true` in `hugo.toml` keeps search engines from indexing the site.
 
 ## Contributing workflow

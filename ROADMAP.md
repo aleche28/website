@@ -84,19 +84,22 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] Performance budget: fail CI if CSS + JS per page is over 30 KB (fonts excluded); today 11.5 KB
 - [x] Manual Lighthouse run (local build, mobile + desktop): 100 everywhere; the style guide draft gets 99 for performance on mobile, from the local test server (no compression)
 
-### 7. Deploy to GitHub Pages ← current
+### 7. Deploy to GitHub Pages
 
 - [x] Deploy workflow: on push to `main` → build → upload Pages artifact → deploy; the base URL comes from Pages, so `aleche28.github.io/website/` works until the custom domain is set (home link, Markdown links and font URLs made subpath-safe)
 - [x] Until go-live, every page is `noindex` (`params.noindex` in `hugo.toml`)
-- [ ] Repo Settings → Pages → Source: GitHub Actions
-- [ ] Branch protection on `main`: PR required, CI must pass
+- [x] Repo Settings → Pages → Source: GitHub Actions
+- [x] Branch protection on `main` (ruleset): PR required, `check` must pass, no force pushes or deletion
 
-### 8. Custom domain
+### 8. Custom domain ← current
 
-- [ ] Cloudflare DNS: apex `A` records → `185.199.108.153`, `.109`, `.110`, `.111`; `AAAA` → `2606:50c0:8000::153`, `8001`, `8002`, `8003`; `www` `CNAME` → `aleche28.github.io`. All records **DNS only** (grey cloud), so GitHub can issue the certificate.
-- [ ] Verify the domain in GitHub **account** settings (prevents domain takeover)
-- [ ] Set the custom domain in repo Settings → Pages, then turn on "Enforce HTTPS"
-- [ ] Update `baseURL` if needed and check `www` → apex redirect
+- [x] Cloudflare DNS, all records **DNS only** (grey cloud), so GitHub can issue the certificate:
+  - apex `A`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+  - apex `AAAA`: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
+  - `www` `CNAME` → `aleche28.github.io`
+- [x] Verify the domain in GitHub **account** settings (prevents domain takeover)
+- [x] Set the custom domain in repo Settings → Pages, then turn on "Enforce HTTPS"; then re-run the Deploy workflow, since the base URL is read at build time
+- [x] Check `baseURL` and redirects: `www`, `http://` and `aleche28.github.io/website/` all 301 to `https://alessiochessa.dev/`
 
 ### 9. Analytics
 
