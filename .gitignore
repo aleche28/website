@@ -8,3 +8,6 @@
 .idea/
 .vscode/
 .lycheecache
+
+# Personal notes, kept out of the repo
+*.local.md
