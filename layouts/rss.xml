@@ -11,6 +11,9 @@
 {{- if eq .Kind "term" }}
   {{- $pages = .Pages }}
 {{- end }}
+{{- /* Root-relative URLs already carry any base path, so only the origin is prepended. */}}
+{{- $base := urls.Parse site.BaseURL }}
+{{- $origin := printf "%s://%s/" $base.Scheme $base.Host }}
 {{- $limit := site.Config.Services.RSS.Limit }}
 {{- if ge $limit 1 }}
   {{- $pages = $pages | first $limit }}
@@ -35,7 +38,7 @@
     {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{- end }}
     {{- range $pages }}
-    {{- $content := .Content | replaceRE `(href|src)="/([^/])` (printf `$1="%s$2` site.BaseURL) }}
+    {{- $content := .Content | replaceRE `(href|src)="/([^/])` (printf `$1="%s$2` $origin) }}
     <item>
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
