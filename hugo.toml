@@ -39,6 +39,11 @@ ordered = false
 [markup.goldmark.renderHooks.image]
 useEmbedded = "fallback"
 
+# Resolve site links in Markdown ([GrepDocs](/projects/grepdocs/)) to page
+# URLs, so they keep working if the site is served from a subpath.
+[markup.goldmark.renderHooks.link]
+useEmbedded = "fallback"
+
 [[menus.main]]
 name = "Blog"
 pageRef = "/blog"
