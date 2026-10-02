@@ -53,7 +53,7 @@ Without shell activation, prefix other commands with `mise exec --`, e.g. `mise 
 ├── archetypes/blog.md    # template for new posts
 ├── tools/                # og-image.html (source of the preview image), check-budget.mjs
 ├── lychee.toml           # link checker config: timeouts, retries, ignored sites
-└── .github/workflows/    # CI: on every PR, on push to main, and weekly for link rot
+└── .github/workflows/    # CI (every PR, push to main, weekly) and deploy to GitHub Pages
 ```
 
 ## Writing a post
@@ -73,6 +73,12 @@ Front matter options:
 Published posts go into the RSS feed at `/blog/index.xml` with their full content. Images in the post's folder (`![alt](diagram.png)`) and site links (`/about/`) get absolute URLs in the feed.
 
 `content/blog/styleguide/` is a permanent draft with every element a post can contain (headings, lists, code, tables, ...). Use it to review design changes locally at <http://localhost:1313/blog/styleguide/>.
+
+## Deployment
+
+Every push to `main` is built and published to GitHub Pages by [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). It can also be started by hand from the Actions tab. The checks run in CI on the pull request, so the deploy workflow only builds and publishes.
+
+Until go-live, `noindex = true` in `hugo.toml` keeps search engines from indexing the site.
 
 ## Contributing workflow
 
