@@ -12,6 +12,11 @@ role = "Backend engineer"
 # gate item in ROADMAP.md.
 noindex = true
 
+# Page counts without cookies or personal data (https://www.goatcounter.com).
+# Only production builds load it; see layouts/_partials/analytics.html.
+[params.goatcounter]
+code = "aleche28"
+
 [params.social]
 github = "https://github.com/aleche28"
 linkedin = "https://www.linkedin.com/in/alessiochessa/"
