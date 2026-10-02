@@ -19,8 +19,14 @@ function* htmlFiles(dir) {
 const attr = (tag, name) =>
   tag.match(new RegExp(`\\s${name}=(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, "i"))?.slice(1).find((v) => v !== undefined);
 
+// Third-party files can't be measured offline: listed in the report instead.
+const external = new Set();
 const localSize = (url) => {
-  if (!url || /^(https?:)?\/\//.test(url)) return 0; // external: not ours to count
+  if (!url) return 0;
+  if (/^(https?:)?\/\//.test(url)) {
+    external.add(url);
+    return 0;
+  }
   return statSync(join(ROOT, url.split(/[?#]/)[0])).size;
 };
 
@@ -49,6 +55,7 @@ for (const [page, kb] of rows) {
   console.log(`${kb > BUDGET_KB ? "OVER" : "ok  "}  ${kb.toFixed(1).padStart(5)} KB  ${page}`);
 }
 console.log(`\nBudget: ${BUDGET_KB} KB of CSS + JS per page (uncompressed, fonts excluded).`);
+if (external.size) console.log(`Not counted (third-party): ${[...external].join(", ")}`);
 if (failed) {
   console.error("Some pages are over budget.");
   process.exit(1);
