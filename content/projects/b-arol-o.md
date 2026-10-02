@@ -13,7 +13,7 @@ B-AROL-O is an independent open-source team that builds robotics and AI projects
 
 ## FREISA and FREISA-GPT
 
-**FREISA** (Four-legged Robot Ensuring Intelligent Sprinkler Automation) is a four-legged robot for automated plant watering. It won the **Grand Prize of the OpenCV AI Competition 2023**.
+**FREISA** (Four-legged Robot Ensuring Intelligent Sprinkler Automation) is a four-legged robot for automated plant watering, winner of the **Grand Prize of the OpenCV AI Competition 2023**.
 
 In 2025 the team turned it into **FREISA-GPT** for the OpenAI Open Model Hackathon: a robot assistant driven by the open-weight gpt-oss-20b model. I worked on FREISA-GPT: I integrated **OpenAI Whisper** to turn voice commands into prompts for the model, and built the API behind the robot's "puppy state", which drives its expressions and sounds.
 
