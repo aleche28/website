@@ -32,7 +32,7 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 
 - [x] Buy `alessiochessa.dev`
 - [x] Create the public repo `aleche28/website`
-- [x] Create a GoatCounter account (site code: `alessiochessa`)
+- [x] Create a GoatCounter account (site code: `aleche28`)
 
 ### 1. Project skeleton
 
@@ -91,7 +91,7 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] Repo Settings → Pages → Source: GitHub Actions
 - [x] Branch protection on `main` (ruleset): PR required, `check` must pass, no force pushes or deletion
 
-### 8. Custom domain ← current
+### 8. Custom domain
 
 - [x] Cloudflare DNS, all records **DNS only** (grey cloud), so GitHub can issue the certificate:
   - apex `A`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
@@ -101,14 +101,14 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] Set the custom domain in repo Settings → Pages, then turn on "Enforce HTTPS"; then re-run the Deploy workflow, since the base URL is read at build time
 - [x] Check `baseURL` and redirects: `www`, `http://` and `aleche28.github.io/website/` all 301 to `https://alessiochessa.dev/`
 
-### 9. Analytics
+### 9. Analytics ← current
 
-- [ ] GoatCounter script (production builds only), no cookies
+- [x] GoatCounter script (production builds only), no cookies: pinned `count.v5.js` with its SRI hash; not loaded by `mise run dev`/`preview`
 
 ### Go-live gate
 
 - [ ] Every page reviewed by me
-- [ ] Lighthouse and link checks green on the live URL
+- [ ] Lighthouse and link checks green on the live URL (SEO stays at 66 while `noindex` is on)
 - [ ] Link previews look right in LinkedIn's Post Inspector (home, About, a project)
 - [ ] Remove `noindex = true` from `hugo.toml`; merge → live
 

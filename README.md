@@ -80,6 +80,8 @@ Every push to `main` is built and published to GitHub Pages by [`.github/workflo
 
 The site address comes from the Pages settings at build time. After changing the custom domain, re-run the Deploy workflow, otherwise the live pages keep pointing at the old address.
 
+Production builds load [GoatCounter](https://www.goatcounter.com) (no cookies, no personal data; config in `params.goatcounter`). The dev and preview servers don't, so local visits are never counted.
+
 Until go-live, `noindex = true` in `hugo.toml` keeps search engines from indexing the site.
 
 ## Contributing workflow
