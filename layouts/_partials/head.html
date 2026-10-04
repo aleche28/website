@@ -21,6 +21,9 @@
   <link rel="canonical" href="{{ .Permalink }}">
   {{- partial "social-meta.html" (dict "page" . "title" $title "description" $description) }}
 {{- end }}
+{{- if .IsHome }}
+  {{- partial "person-json-ld.html" . }}
+{{- end }}
 <meta name="theme-color" content="#fdfdfc" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131519" media="(prefers-color-scheme: dark)">
 <link rel="preload" href="{{ "fonts/inter-latin-wght-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>

@@ -1,0 +1,19 @@
+{{- /*
+  Person structured data (schema.org JSON-LD) for the home page, so search
+  engines can match the site to my name and to my GitHub and LinkedIn profiles.
+*/ -}}
+{{- $sameAs := slice }}
+{{- with site.Params.social }}
+  {{- with .github }}{{ $sameAs = $sameAs | append . }}{{ end }}
+  {{- with .linkedin }}{{ $sameAs = $sameAs | append . }}{{ end }}
+{{- end }}
+{{- $person := dict
+  "@context" "https://schema.org"
+  "@type" "Person"
+  "name" site.Title
+  "url" site.Home.Permalink
+  "jobTitle" site.Params.role
+  "description" site.Params.description
+  "sameAs" $sameAs
+}}
+<script type="application/ld+json">{{ $person | jsonify | safeJS }}</script>
