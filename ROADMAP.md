@@ -62,7 +62,7 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] Projects: GrepDocs, B-AROL-O (FREISA, RUCHE); problem, stack, status, links. **Only shipped work.**
 - [x] Projects layouts: list ordered by `weight`, project page with status / stack / links
 - [x] Decide which contacts are public and fill in `params.social` (GitHub, LinkedIn, email)
-- [ ] Review of every page by me
+- [x] Review of every page by me
 
 ### 4. Blog features
 
@@ -76,6 +76,7 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] Open Graph and Twitter cards, so links look good on LinkedIn. Own partial instead of Hugo's built-ins: previews reuse the page's `<title>`/description, only posts are `article`; one default preview image (`mise run gen:og`)
 - [x] Per-page `description` (a published post without one fails the build); canonical URLs checked, `404` gets `noindex` and no canonical
 - [x] Check `sitemap.xml` and `robots.txt` (`robots.txt` points to the sitemap; `/tags/` is left out of the sitemap until there are tags)
+- [x] Person structured data (JSON-LD) on the home page: name, role, description, GitHub and LinkedIn as `sameAs`. The performance budget skips JSON data blocks, since they aren't JS
 
 ### 6. Quality gates in CI
 
@@ -100,13 +101,13 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 - [x] Set the custom domain in repo Settings → Pages, then turn on "Enforce HTTPS"; then re-run the Deploy workflow, since the base URL is read at build time
 - [x] Check `baseURL` and redirects: `www`, `http://` and `aleche28.github.io/website/` all 301 to `https://alessiochessa.dev/`
 
-### 9. Analytics ← current
+### 9. Analytics
 
 - [x] GoatCounter script (production builds only), no cookies: pinned `count.v5.js` with its SRI hash; not loaded by `mise run dev`/`preview`
 
 ### Go-live gate
 
-- [ ] Every page reviewed by me
+- [x] Every page reviewed by me
 - [ ] Lighthouse and link checks green on the live URL (SEO stays at 66 while `noindex` is on)
 - [ ] Link previews look right in LinkedIn's Post Inspector (home, About, a project)
 - [ ] Remove `noindex = true` from `hugo.toml`; merge → live
