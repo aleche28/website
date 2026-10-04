@@ -108,9 +108,9 @@ There is no fixed go-live date: the site goes live when I'm happy with it (see [
 ### Go-live gate
 
 - [x] Every page reviewed by me
-- [ ] Lighthouse and link checks green on the live URL (SEO stays at 66 while `noindex` is on)
-- [ ] Link previews look right in LinkedIn's Post Inspector (home, About, a project)
-- [ ] Remove `noindex = true` from `hugo.toml`; merge → live
+- [x] Lighthouse and link checks green on the live URL: Home, About and GrepDocs at 100 for performance, accessibility and best practices (mobile + desktop); SEO 66 only from `noindex`
+- [x] Link previews look right in LinkedIn's Post Inspector (home, About, a project). Every page shares the default preview image
+- [x] Remove `noindex = true` from `hugo.toml`; merge → live
 
 ### 10. Term mode
 

@@ -7,10 +7,8 @@ enableRobotsTXT = true
 [params]
 description = "Backend engineer who builds, ships and observes systems. C#/.NET at work, Go on the side."
 role = "Backend engineer"
-# Until go-live: every page says `noindex`, so search engines skip the site
-# while it's being reviewed at its real URL. Removing it is the last go-live
-# gate item in ROADMAP.md.
-noindex = true
+# `noindex = true` here makes every page `noindex`, so search engines skip the
+# whole site (it was on until go-live).
 
 # Page counts without cookies or personal data (https://www.goatcounter.com).
 # Only production builds load it; see layouts/_partials/analytics.html.
