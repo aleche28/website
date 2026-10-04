@@ -39,6 +39,8 @@ for (const file of htmlFiles(ROOT)) {
     if (/^stylesheet$/i.test(attr(tag, "rel") ?? "")) bytes += localSize(attr(tag, "href"));
   }
   for (const [, open, body] of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
+    // Data blocks (e.g. JSON-LD) aren't JS: browsers never run them.
+    if (/json/i.test(attr(open, "type") ?? "")) continue;
     const src = attr(open, "src");
     bytes += src ? localSize(src) : Buffer.byteLength(body);
   }
