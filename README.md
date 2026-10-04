@@ -82,7 +82,7 @@ The site address comes from the Pages settings at build time. After changing the
 
 Production builds load [GoatCounter](https://www.goatcounter.com) (no cookies, no personal data; config in `params.goatcounter`). The dev and preview servers don't, so local visits are never counted.
 
-Until go-live, `noindex = true` in `hugo.toml` keeps search engines from indexing the site.
+The site is indexed by search engines. To hide it again (e.g. during a redesign), set `noindex = true` under `[params]` in `hugo.toml`: every page then gets `noindex`.
 
 ## Contributing workflow
 
